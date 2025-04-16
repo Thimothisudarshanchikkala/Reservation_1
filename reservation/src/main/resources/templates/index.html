@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bus Reservation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <h1>Reservation List</h1>
+    <a href="/add">Add New Reservation</a>  
+    <form action="/search" method="get">
+        <input type="text" name="name" placeholder="Enter name..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+    <p th:if="${success}" th:text="${success}" class="success"></p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>busno</th>
+                <th>source</th>
+                <th>destination</th>
+                <th>seattype</th>
+                <th>availableseats</th>
+                <th>totalseats</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr> 
+                <td th:text="${res.busno}"></td>
+                <td th:text="${res.source}"></td>
+                <td th:text="${res.destination}"></td>
+                <td th:text="${res.seattype}"></td>
+                <td th:text="${res.availableseats}"></td>
+                <td th:text="${res.totalseats}"></td>
+                <td th:text="${res.sprice}"></td>
+                <td>
+                    <a th:href="@{/edit/{busno}(busno=${emp.busno})}">Edit</a>|
+                    <a th:href="@{/delete/{busno}(busno=${emp.busno})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

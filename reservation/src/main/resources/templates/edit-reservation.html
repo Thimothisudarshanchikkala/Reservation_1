@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <h1>Edit Reservation</h1>
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+    <p th:if="${success}" th:text="${success}" class="success"></p>
+    <form th:action="@{/add}" th:object="${Reservation}" method="post">
+        <label>busno:</label><input type="number" th:field="*{busno}" required><br>
+        <label>source:</label><input type="text" th:field="*{source}" required><br>
+        <label>destination:</label><input type="text" th:field="*{destination}" required><br>
+        <label>seattype:</label><input type="text" step="0.01" th:field="*{seattype}" required><br>
+        <label>availableseats:</label><input type="number" th:field="*{availableseats}" required><br>
+        <label>totalseats:</label><input type="number" th:field="*{totalseats}" required><br>
+        <label>price:</label><input type="number" th:field="*{price}" required><br>
+        <button type="submit">Edit Reservation</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>
